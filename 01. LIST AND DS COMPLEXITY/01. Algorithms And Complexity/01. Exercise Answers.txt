@@ -1,0 +1,6 @@
+Problem 1.	Check Prime – Calculate the Complexity (Worst Case): O(n)
+Problem 2.	Check Prime – Calculate the Complexity (Best Case): O(1)
+Problem 3.	Fast Check Prime – Calculate the Complexity: O(√n)
+Problem 4.	First N Primes – Calculate the Complexity: O(n√n)
+Problem 5.	First N Primes – Calculate the Memory Consumption: O(√n)
+Problem 6.	Primes in Range – Calculate the Complexity: O(n√n)

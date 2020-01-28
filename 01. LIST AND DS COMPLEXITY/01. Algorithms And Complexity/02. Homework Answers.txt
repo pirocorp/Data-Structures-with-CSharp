@@ -1,0 +1,10 @@
+Problem 1.	Add(T) Complexity: O(n)
+Problem 2.	Remove(index) Complexity – Worst Case: O(n^2)
+Problem 3.	Remove(index) Complexity – Best Case: O(n)
+Problem 4.	Remove(index) Complexity – Average Case: (n^2)
+Problem 5.	RemoveFirst(T) Complexity: O(n^2);
+Problem 6.	RemoveLast(T) Complexity: O(n);
+Problem 7.	Length Complexity: O(1);
+Problem 8.	This[index] Complexity: O(1);
+Problem 9.	First Complexity: O(1);
+Problem 10.	Last Complexity: O(1);
