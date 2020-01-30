@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Linked Stack", "04. Lin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Linked Queue", "05. Linked Queue\05. Linked Queue.csproj", "{3C8EB7F9-6066-4FF4-BE97-3361B1F625E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Sequence N-M", "06. Sequence N-M\06. Sequence N-M.csproj", "{8DF10434-5FD8-469C-83ED-C40BC1A1A4C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3C8EB7F9-6066-4FF4-BE97-3361B1F625E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C8EB7F9-6066-4FF4-BE97-3361B1F625E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C8EB7F9-6066-4FF4-BE97-3361B1F625E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF10434-5FD8-469C-83ED-C40BC1A1A4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF10434-5FD8-469C-83ED-C40BC1A1A4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF10434-5FD8-469C-83ED-C40BC1A1A4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF10434-5FD8-469C-83ED-C40BC1A1A4C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
