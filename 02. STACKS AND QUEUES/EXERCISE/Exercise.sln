@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Reverse Numbers", "01. Reverse Numbers\01. Reverse Numbers.csproj", "{280DECFC-9641-4142-8070-D9F697F94858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Reverse Numbers", "01. Reverse Numbers\01. Reverse Numbers.csproj", "{280DECFC-9641-4142-8070-D9F697F94858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Calculate Sequence", "02. Calculate Sequence\02. Calculate Sequence.csproj", "{647C1B76-9ECE-4DE4-A0C1-0A8D99383951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Calculate Sequence", "02. Calculate Sequence\02. Calculate Sequence.csproj", "{647C1B76-9ECE-4DE4-A0C1-0A8D99383951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Array Stack", "03. Array Stack\03. Array Stack.csproj", "{72AE2A96-9046-4AA6-9E01-A4960A5C93BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Array Stack", "03. Array Stack\03. Array Stack.csproj", "{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{647C1B76-9ECE-4DE4-A0C1-0A8D99383951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{647C1B76-9ECE-4DE4-A0C1-0A8D99383951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{647C1B76-9ECE-4DE4-A0C1-0A8D99383951}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72AE2A96-9046-4AA6-9E01-A4960A5C93BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72AE2A96-9046-4AA6-9E01-A4960A5C93BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72AE2A96-9046-4AA6-9E01-A4960A5C93BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72AE2A96-9046-4AA6-9E01-A4960A5C93BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
