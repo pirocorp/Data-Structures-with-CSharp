@@ -28,8 +28,10 @@
 
             queue.Enqueue(current + 1);
             items.Add(current + 1);
+
             queue.Enqueue(2 * current + 1);
             items.Add(2 * current + 1);
+
             queue.Enqueue(current + 2);
             items.Add(current + 2);
 
