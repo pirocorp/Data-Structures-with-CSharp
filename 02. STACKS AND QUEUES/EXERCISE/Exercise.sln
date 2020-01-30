@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Calculate Sequence", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Array Stack", "03. Array Stack\03. Array Stack.csproj", "{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Linked Stack", "04. Linked Stack\04. Linked Stack.csproj", "{7973A291-AEB9-4AD4-81FB-64F4D5A5CF7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AACC5E1-4930-48F7-BB84-D32836EFE6DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7973A291-AEB9-4AD4-81FB-64F4D5A5CF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7973A291-AEB9-4AD4-81FB-64F4D5A5CF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7973A291-AEB9-4AD4-81FB-64F4D5A5CF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7973A291-AEB9-4AD4-81FB-64F4D5A5CF7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
