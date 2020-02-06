@@ -40,19 +40,6 @@ public static class DeepestNodeProgram
         }
     }
 
-    private static void GetMiddleNodes(Tree<int> node, List<Tree<int>> middleNodes)
-    {
-        if (node.Children.Count > 0 && node.Parent != null)
-        {
-            middleNodes.Add(node);
-        }
-
-        foreach (var child in node.Children)
-        {
-            GetMiddleNodes(child, middleNodes);
-        }
-    }
-
     private static Tree<int> GetRoot()
     {
         return Nodes.Single(x => x.Value.Parent == null).Value;
