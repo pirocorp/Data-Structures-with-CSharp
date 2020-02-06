@@ -7,6 +7,8 @@ public class Tree<T>
 
     public IList<Tree<T>> Children { get; private set; }
 
+    public Tree<T> Parent { get; set; }
+
     public Tree(T value, params Tree<T>[] children)
     {
         this.Value = value;
@@ -62,6 +64,11 @@ public class Tree<T>
         }
 
         return result;
+    }
+
+    public override string ToString()
+    {
+        return this.Value.ToString();
     }
 
     private void DFS(Tree<T> tree, List<T> result)
