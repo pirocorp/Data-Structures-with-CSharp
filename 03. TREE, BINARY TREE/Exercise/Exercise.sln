@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Leaf Nodes", "03. Leaf 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Middle Nodes", "04. Middle Nodes\04. Middle Nodes.csproj", "{A7EA1DF6-A3CA-474A-8B83-2085099A419B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Deepest Node", "05. Deepest Node\05. Deepest Node.csproj", "{DC7A1084-5FD2-4C8B-B6C6-258D52ACC410}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A7EA1DF6-A3CA-474A-8B83-2085099A419B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7EA1DF6-A3CA-474A-8B83-2085099A419B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7EA1DF6-A3CA-474A-8B83-2085099A419B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7A1084-5FD2-4C8B-B6C6-258D52ACC410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7A1084-5FD2-4C8B-B6C6-258D52ACC410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7A1084-5FD2-4C8B-B6C6-258D52ACC410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7A1084-5FD2-4C8B-B6C6-258D52ACC410}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
