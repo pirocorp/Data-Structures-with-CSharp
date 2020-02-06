@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Deepest Node", "05. Dee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Longest Path", "06. Longest Path\06. Longest Path.csproj", "{5D5B1851-B624-474E-86B5-8C2B6791F0D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Paths With Given Sum", "07. Paths With Given Sum\07. Paths With Given Sum.csproj", "{38E1163F-5603-4C54-A144-FE8D2F4E84E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5D5B1851-B624-474E-86B5-8C2B6791F0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D5B1851-B624-474E-86B5-8C2B6791F0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D5B1851-B624-474E-86B5-8C2B6791F0D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E1163F-5603-4C54-A144-FE8D2F4E84E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E1163F-5603-4C54-A144-FE8D2F4E84E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E1163F-5603-4C54-A144-FE8D2F4E84E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E1163F-5603-4C54-A144-FE8D2F4E84E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
