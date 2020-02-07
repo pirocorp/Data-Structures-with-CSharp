@@ -426,12 +426,14 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
             return 0;
         }
 
-        int compare = element.CompareTo(node.Value);
+        var compare = element.CompareTo(node.Value);
 
+        //element < node.Value
         if (compare < 0)
         {
             return this.Rank(element, node.Left);
         }
+
         if (compare > 0)
         {
             return 1 + (node.Left?.Count ?? 0) + this.Rank(element, node.Right);
