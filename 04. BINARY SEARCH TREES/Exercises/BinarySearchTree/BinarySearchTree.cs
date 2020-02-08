@@ -105,7 +105,7 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
 
         var current = new Node(element);
 
-        if (parent.Value.CompareTo(element) > 0)
+        if (parent?.Value.CompareTo(element) > 0)
         {
             parent.Left = current;
             current.Parent = parent;
@@ -449,7 +449,7 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
             throw new InvalidOperationException();
         }
 
-        int compare = rank.CompareTo(this.Rank(node.Value));
+        var compare = rank.CompareTo(this.Rank(node.Value));
 
         if (compare < 0)
         {
