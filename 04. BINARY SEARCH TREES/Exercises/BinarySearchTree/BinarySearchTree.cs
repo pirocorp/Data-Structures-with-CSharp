@@ -82,39 +82,7 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
             return;
         }
 
-        Node parent = null;
-        var node = this.root;
-
-        while (node != null)
-        {
-            parent = node;
-
-            if (node.Value.CompareTo(element) > 0)
-            {
-                node = node.Left;
-            }
-            else if (node.Value.CompareTo(element) < 0)
-            {
-                node = node.Right;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        var current = new Node(element);
-
-        if (parent?.Value.CompareTo(element) > 0)
-        {
-            parent.Left = current;
-            current.Parent = parent;
-        }
-        else
-        {
-            parent.Right = current;
-            current.Parent = parent;
-        }
+        this.Insert(element, this.root);
     }
 
     public bool Contains(T element)
@@ -264,6 +232,36 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
 
         return this.MaxElement(node.Right);
     }
+
+    private void Insert(T element, Node node)
+    {
+        //(element > node.Value) = 1
+        if (element.CompareTo(node.Value) > 0)
+        {
+            //Go Right
+            if (node.Right == null)
+            {
+                node.Right = new Node(element);
+                return;
+            }
+
+
+            this.Insert(element, node.Right);
+        }
+
+        //(element < node.Value) = -1
+        if (element.CompareTo(node.Value) < 0)
+        {
+            //Go Left
+            if (node.Left == null)
+            {
+                node.Left = new Node(element);
+                return;
+            }
+
+            this.Insert(element, node.Left);
+        }
+    }
     
     private Node FindElement(T element)
     {
@@ -336,6 +334,38 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
         }
 
         this.DeleteMinRecursive(node.Left);
+    }
+
+    private Node Delete(T element, Node node)
+    {
+        //element > node.Value = 1
+        var compare = element.CompareTo(node.Value);
+
+        if (compare < 0)
+        {
+            node.Left = this.Delete(element, node.Left);
+        }
+        else if (compare > 0)
+        {
+            node.Right = this.Delete(element, node.Right);
+        }
+        else
+        {
+            if (node.Left == null)
+            {
+                return node.Right;
+            }
+            else if (node.Right == null)
+            {
+                return node.Left;
+            }
+
+            node.Value = this.MinElement(node.Right).Value;
+
+            node.Right = this.Delete(node.Value, node.Right);
+        }
+
+        return node;
     }
 
     private IEnumerable<T> Range(Node node, T startRange, T endRange)
@@ -508,42 +538,6 @@ public class BinarySearchTree<T> : IBinarySearchTree<T>, IEnumerable<T> where T:
             return node;
         }
         return temp;
-    }
-
-    private Node Delete(T element, Node node)
-    {
-        if (node == null)
-        {
-            return null;
-        }
-
-        int compare = element.CompareTo(node.Value);
-
-        if (compare < 0)
-        {
-            node.Left = this.Delete(element, node.Left);
-        }
-        else if (compare > 0)
-        {
-            node.Right = this.Delete(element, node.Right);
-        }
-        else
-        {
-            if (node.Left == null)
-            {
-                return node.Right;
-            }
-            else if (node.Right == null)
-            {
-                return node.Left;
-            }
-
-            node.Value = this.MinElement(node.Right).Value;
-
-            node.Right = this.Delete(node.Value, node.Right);
-        }
-
-        return node;
     }
 
     private void RootNullCheck()
