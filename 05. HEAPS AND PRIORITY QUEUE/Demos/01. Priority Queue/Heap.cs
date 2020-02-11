@@ -37,7 +37,7 @@
 
                 var child = arr[childIndex];
 
-                //child > element
+                //child < element
                 if (child.CompareTo(element) < 0)
                 {
                     break;
