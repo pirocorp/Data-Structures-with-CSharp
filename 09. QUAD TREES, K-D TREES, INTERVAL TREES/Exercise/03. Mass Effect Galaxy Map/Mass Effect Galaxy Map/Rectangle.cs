@@ -34,9 +34,6 @@
                this.X1 <= other.X &&
                this.Y1 <= other.Y &&
                this.Y2 >= other.Y;
-        //        (this.getLocation().getX() < p.getX() && this.getLocation().getY() < p.getY() &&
-        //         this.getLocation().getX() + this.getWidth() > p.getX() &&
-        //         this.getLocation().getY() + this.getHeight() > p.getY());
     }
 
     public override string ToString()
