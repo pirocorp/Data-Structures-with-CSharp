@@ -18,5 +18,19 @@
             this.X1 = x;
             this.Y1 = y;
         }
+
+        public override string ToString()
+        {
+            return $"({this.X1}, {this.Y1})";
+        }
+
+        public bool Intersect(GameObject that)
+        {
+            return
+                this.X1 <= that.X2 &&
+                this.X2 >= that.X1 &&
+                this.Y1 <= that.Y2 &&
+                this.Y2 >= that.Y1;
+        }
     }
 }
