@@ -28,12 +28,110 @@ public class QuadTree<T> where T : IBoundable
 
     public bool Insert(T item)
     {
-        throw new NotImplementedException();
+        var current = this.root;
+        var depth = 1;
+        while (current.Children != null)
+        {
+            var q = this.GetQ(current, item.Bounds);
+            if (q == -1) break;
+            current = current.Children[q];
+            depth++;
+        }
+
+        current.Items.Add(item);
+        this.TrySplit(current, depth);
+        this.Count++;
+        return true;
+    }
+
+    private void TrySplit(Node<T> node, int depth)
+    {
+        if (!node.ShouldSplit || depth >= this.MaxDepth)
+        {
+            return;
+        }
+
+        node.Children = new Node<T>[4];
+
+        var leftWidth = node.Bounds.Width / 2;
+        var rightWidth = node.Bounds.Width - leftWidth;
+        var topHeight = node.Bounds.Height / 2;
+        var botHeight = node.Bounds.Height - topHeight;
+
+        node.Children[0] = new Node<T>(node.Bounds.MidX, node.Bounds.Y1, rightWidth, topHeight);
+        node.Children[1] = new Node<T>(node.Bounds.X1, node.Bounds.Y1, leftWidth, topHeight);
+        node.Children[2] = new Node<T>(node.Bounds.X1, node.Bounds.MidX, leftWidth, botHeight);
+        node.Children[3] = new Node<T>(node.Bounds.MidX, node.Bounds.MidY, rightWidth, botHeight);
+
+        var toRemove = new HashSet<T>();
+        foreach (var item in node.Items)
+        {
+            var q = this.GetQ(node, item.Bounds);
+            if (q != -1)
+            {
+                node.Children[q].Items.Add(item);
+                toRemove.Add(item);
+            }
+        }
+
+        node.Items.RemoveAll(x => toRemove.Contains(x));
+
+        foreach (var child in node.Children)
+        {
+            this.TrySplit(child, depth + 1);
+        }
+    }
+
+    private int GetQ(Node<T> current, Rectangle bounds)
+    {
+        if (current.Children != null)
+        {
+            if (bounds.IsInside(current.Children[0].Bounds)) return 0;
+            if (bounds.IsInside(current.Children[1].Bounds)) return 1;
+            if (bounds.IsInside(current.Children[2].Bounds)) return 2;
+            if (bounds.IsInside(current.Children[3].Bounds)) return 3;
+        }
+
+        return -1;
     }
 
     public List<T> Report(Rectangle bounds)
     {
-        throw new NotImplementedException();
+        List<T> results = new List<T>();
+        this.GetPotentialCollisions(this.root, bounds, results);
+        return results;
+    }
+
+    private void GetPotentialCollisions(Node<T> node, Rectangle bounds, List<T> results)
+    {
+        var q = this.GetQ(node, bounds);
+        if (q != -1)
+        {
+            results.AddRange(node.Items);
+            this.GetPotentialCollisions(node.Children[q], bounds, results);
+        }
+        else
+        {
+            this.GetNodeItems(node, results);
+        }
+    }
+
+    private void GetNodeItems(Node<T> node, List<T> results)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        results.AddRange(node.Items);
+
+        if (node.Children != null)
+        {
+            foreach (var child in node.Children)
+            {
+                this.GetNodeItems(child, results);
+            }
+        }
     }
 
     private void ForEachDfs(Node<T> node, Action<List<T>, int, int> action, int depth = 1, int quadrant = 0)
@@ -52,7 +150,7 @@ public class QuadTree<T> where T : IBoundable
         {
             for (int i = 0; i < node.Children.Length; i++)
             {
-                ForEachDfs(node.Children[i], action, depth + 1, i);
+                this.ForEachDfs(node.Children[i], action, depth + 1, i);
             }
         }
     }

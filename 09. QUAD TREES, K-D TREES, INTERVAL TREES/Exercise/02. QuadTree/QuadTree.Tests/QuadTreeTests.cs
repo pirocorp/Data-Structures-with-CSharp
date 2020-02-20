@@ -34,7 +34,7 @@ public class QuadTreeTests
             this.quadTree.Insert(testBox);
         }
 
-        Assert.AreEqual(items.Count, quadTree.Count);
+        Assert.AreEqual(items.Count, this.quadTree.Count);
     }
 
     [TestMethod]
@@ -113,20 +113,20 @@ public class QuadTreeTests
         var list = new List<TestBox>();
 
         list.Add(shepard);
-        quadTree.Insert(shepard);
+        this.quadTree.Insert(shepard);
         for (int i = 0; i < ObjectsCount; i++)
         {
             var x = random.Next(0, WorldWidth - 10);
             var y = random.Next(0, WorldHeight - 10);
             var obj = new TestBox(x, y);
             list.Add(obj);
-            quadTree.Insert(obj);
+            this.quadTree.Insert(obj);
         }
 
         var listCollisions = PerformCollisionSearchList(shepard, list)
             .OrderBy(e => e)
             .ToList();
-        var quadTreeCollisions = PerformCollisionSearchQuadTree(shepard, quadTree)
+        var quadTreeCollisions = PerformCollisionSearchQuadTree(shepard, this.quadTree)
             .OrderBy(e => e)
             .ToList();
 
