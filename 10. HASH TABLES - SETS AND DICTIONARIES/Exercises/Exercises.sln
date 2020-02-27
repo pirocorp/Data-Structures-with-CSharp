@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Dictionary", "01. Dictionary\01. Dictionary.csproj", "{8C5205FC-8DC2-4E69-97FB-464C9AFA9786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Dictionary", "01. Dictionary\01. Dictionary.csproj", "{8C5205FC-8DC2-4E69-97FB-464C9AFA9786}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Count Symbols", "02. Count Symbols\02. Count Symbols.csproj", "{944F9C95-95A8-458D-B1BC-1735C9D6F280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Phonebook", "03. Phonebook\03. Phonebook.csproj", "{7C1FD3F8-8AB3-41EC-B4A0-75D6BC781122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{944F9C95-95A8-458D-B1BC-1735C9D6F280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{944F9C95-95A8-458D-B1BC-1735C9D6F280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{944F9C95-95A8-458D-B1BC-1735C9D6F280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1FD3F8-8AB3-41EC-B4A0-75D6BC781122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1FD3F8-8AB3-41EC-B4A0-75D6BC781122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1FD3F8-8AB3-41EC-B4A0-75D6BC781122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1FD3F8-8AB3-41EC-B4A0-75D6BC781122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
