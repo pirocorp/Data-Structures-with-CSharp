@@ -13,12 +13,15 @@
             collection.Set("Maria", 2); // Max capacity reached
 
             collection.Set("Tanio", 3); // Removes Gosho to make room for Tanio
+            collection.Set("Tanio", 20);
             collection.Get("Penio");
             collection.Set("Penka", 10); // Removes Prakash to make room for Penka
             foreach (var record in collection)
             {
-                Console.Write("{0}({1}) ", record.Key, record.Value); // Penka(10) Penio(3) Tanio(3) Maria(2)
+                Console.Write("{0}({1}) ", record.Key, record.Value); 
             }
+
+            // Penka(10) Penio(3) Tanio(3) Maria(2)
         }
     }
 }

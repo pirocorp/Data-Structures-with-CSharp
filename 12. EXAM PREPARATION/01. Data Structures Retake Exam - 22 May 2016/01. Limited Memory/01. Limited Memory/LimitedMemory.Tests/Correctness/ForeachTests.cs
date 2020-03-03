@@ -100,6 +100,9 @@ namespace LimitedMemory.Tests
                 })
                 .ToArray();
 
+            var expectedOrder = new[] { records[1], records[3], records[2], records[0] };
+
+
             foreach (var record in records)
             {
                 collection.Set(record.Key, record.Value);
@@ -107,7 +110,6 @@ namespace LimitedMemory.Tests
 
             collection.Get(records[2].Key);
             collection.Get(records[0].Key);
-            var expectedOrder = new[] { records[1], records[3], records[2], records[0] };
 
             int order = collection.Count - 1;
             foreach (var record in collection)
@@ -137,8 +139,9 @@ namespace LimitedMemory.Tests
                 collection.Set(record.Key, record.Value);
             }
 
-            collection.Set(records[1].Key, 5);
             var expectedOrder = new[] { records[0], records[2], records[3], records[1] };
+
+            collection.Set(records[1].Key, 5);
 
             int order = collection.Count - 1;
             foreach (var record in collection)

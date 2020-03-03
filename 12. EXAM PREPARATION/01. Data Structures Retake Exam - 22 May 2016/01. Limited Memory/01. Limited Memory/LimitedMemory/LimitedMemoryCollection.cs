@@ -5,71 +5,58 @@
 
     public class LimitedMemoryCollection<TKey, TValue> : ILimitedMemoryCollection<TKey, TValue>
     {
-        private readonly Dictionary<TKey, Pair<TKey, TValue>> _byKey;
-        private readonly Queue<Pair<TKey, TValue>> _byOrderOfInsertion;
-
-        private readonly LinkedList<Pair<TKey, TValue>> _byMostRecentRequest;
-        private readonly Dictionary<TKey, LinkedListNode<Pair<TKey, TValue>>> _byMostRecentByKey;
+        private readonly Dictionary<TKey, LinkedListNode<Pair<TKey, TValue>>> _elements;
+        private readonly LinkedList<Pair<TKey, TValue>> _priority;
         private readonly int _capacity;
 
         public LimitedMemoryCollection(int capacity)
         {
-            this._byKey = new Dictionary<TKey, Pair<TKey, TValue>>();
-            this._byOrderOfInsertion = new Queue<Pair<TKey, TValue>>(capacity);
-
-            this._byMostRecentRequest = new LinkedList<Pair<TKey, TValue>>();
-            this._byMostRecentByKey = new Dictionary<TKey, LinkedListNode<Pair<TKey, TValue>>>();
+            this._elements = new Dictionary<TKey, LinkedListNode<Pair<TKey, TValue>>>();
+            this._priority = new LinkedList<Pair<TKey, TValue>>();
             this._capacity = capacity;
         }
 
         public int Capacity => this._capacity;
 
-        public int Count => this._byOrderOfInsertion.Count;
+        public int Count => this._elements.Count;
 
         public void Set(TKey key, TValue value)
         {
-            var newPair = new Pair<TKey, TValue>(key, value);
-
-            if (this._byKey.ContainsKey(key))
+            if (!this._elements.ContainsKey(key))
             {
-                var current = this._byKey[key];
-                current.Value = value;
-                this.ChangeMostRecent(current);
-                return;
+                if (this.Count == this.Capacity)
+                {
+                    this.RemoveOldestElement();
+                }
+
+                this.AddElement(key, value);
             }
-
-            this.AddToMostRecent(newPair);
-
-            if (this.Capacity == this.Count)
+            else
             {
-                var oldElement = this._byOrderOfInsertion.Dequeue();
-                this._byKey.Remove(oldElement.Key);
-
-                this._byKey.Add(key, newPair);
-                this._byOrderOfInsertion.Enqueue(newPair);
-
-                return;
+                var node = this._elements[key];
+                node.Value.Value = value;
+                this._priority.Remove(node);
+                this._priority.AddFirst(node);
             }
-
-            this._byKey[key] = newPair;
-            this._byOrderOfInsertion.Enqueue(newPair);
         }
 
         public TValue Get(TKey key)
         {
-            if (!this._byKey.ContainsKey(key))
+            if (!this._elements.ContainsKey(key))
             {
                 throw new KeyNotFoundException();
             }
 
-            var current = this._byKey[key];
-            this.ChangeMostRecent(current);
-            return current.Value;
+            var node = this._elements[key];
+            this._priority.Remove(node);
+            this._priority.AddFirst(node);
+
+            return node.Value.Value;
         }
 
         public IEnumerator<Pair<TKey, TValue>> GetEnumerator()
         {
-            return this._byMostRecentRequest.GetEnumerator();
+            return this._priority.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -77,18 +64,19 @@
             return this.GetEnumerator();
         }
 
-        private void AddToMostRecent(Pair<TKey, TValue> pair)
+        private void AddElement(TKey key, TValue value)
         {
-            var current = this._byMostRecentRequest.AddFirst(pair);
-            this._byMostRecentByKey.Add(pair.Key, current);
+            var pair = new Pair<TKey, TValue>(key, value);
+            var node = new LinkedListNode<Pair<TKey, TValue>>(pair);
+            this._elements.Add(key, node);
+            this._priority.AddFirst(node);
         }
 
-        private void ChangeMostRecent(Pair<TKey, TValue> current)
+        private void RemoveOldestElement()
         {
-            var node = this._byMostRecentByKey[current.Key];
-
-            this._byMostRecentRequest.Remove(node);
-            this._byMostRecentRequest.AddFirst(node);
+            var node = this._priority.Last;
+            this._elements.Remove(node.Value.Key);
+            this._priority.RemoveLast();
         }
     }
 }
