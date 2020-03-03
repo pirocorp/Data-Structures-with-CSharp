@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitFortress", "PitFortress\PitFortress.csproj", "{CF29D22B-C443-44A6-952D-7878F09C24FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitFortressTests", "PitFortressTests\PitFortressTests.csproj", "{1E6EFE01-7AD6-4A98-BAB2-D05C9F762262}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF29D22B-C443-44A6-952D-7878F09C24FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF29D22B-C443-44A6-952D-7878F09C24FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF29D22B-C443-44A6-952D-7878F09C24FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF29D22B-C443-44A6-952D-7878F09C24FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E6EFE01-7AD6-4A98-BAB2-D05C9F762262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6EFE01-7AD6-4A98-BAB2-D05C9F762262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6EFE01-7AD6-4A98-BAB2-D05C9F762262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6EFE01-7AD6-4A98-BAB2-D05C9F762262}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C71644CD-F098-494E-AEE7-5FF484AAF7AD}
+	EndGlobalSection
+EndGlobal

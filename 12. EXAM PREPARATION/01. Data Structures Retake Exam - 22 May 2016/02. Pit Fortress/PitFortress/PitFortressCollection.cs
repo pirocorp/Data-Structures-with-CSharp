@@ -14,7 +14,7 @@ namespace PitFortress
         private readonly SortedSet<Player> _playersScores;
         private readonly OrderedDictionary<int, SortedSet<Minion>> _minions;
         private readonly SortedSet<Mine> _mines;
-    
+
         private int _mineId = 1;
         private int _minionId = 1;
 

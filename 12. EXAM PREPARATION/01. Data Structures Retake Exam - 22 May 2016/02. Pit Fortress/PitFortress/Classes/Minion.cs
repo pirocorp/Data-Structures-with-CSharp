@@ -1,5 +1,6 @@
 ﻿namespace PitFortress.Classes
 {
+    using System.Collections.Generic;
     using Interfaces;
 
     public class Minion : IMinion
