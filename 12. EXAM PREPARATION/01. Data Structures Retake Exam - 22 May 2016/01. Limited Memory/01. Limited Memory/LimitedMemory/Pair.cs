@@ -1,9 +1,20 @@
 ﻿namespace LimitedMemory
 {
-    public class Pair<K, V>
+    public class Pair<TKey, TValue>
     {
-        public K Key { get; set; }
+        public Pair(TKey key, TValue value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
 
-        public V Value { get; set; }
+        public TKey Key { get; private set; }
+
+        public TValue Value { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Key} {this.Value}";
+        }
     }
 }

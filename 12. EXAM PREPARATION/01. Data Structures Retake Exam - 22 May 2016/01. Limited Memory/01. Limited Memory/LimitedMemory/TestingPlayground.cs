@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace LimitedMemory
+﻿namespace LimitedMemory
 {
-    class TestingPlayground
+    using System;
+
+    public static class TestingPlayground
     {
-        static void Main()
+        public static void Main()
         {
             var collection = new LimitedMemoryCollection<string, int>(4);
             collection.Set("Gosho", 5);

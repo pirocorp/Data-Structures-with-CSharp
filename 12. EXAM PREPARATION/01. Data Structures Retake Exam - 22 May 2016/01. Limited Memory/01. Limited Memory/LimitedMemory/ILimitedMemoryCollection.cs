@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-
-namespace LimitedMemory
+﻿namespace LimitedMemory
 {
-    public interface ILimitedMemoryCollection<K, V> : IEnumerable<Pair<K, V>>
+    using System.Collections.Generic;
+
+    public interface ILimitedMemoryCollection<TKey, TValue> : IEnumerable<Pair<TKey, TValue>>
     {
         int Capacity { get; }
 
         int Count { get; }
 
-        void Set(K key, V value);
+        void Set(TKey key, TValue value);
 
-        V Get(K key);
+        TValue Get(TKey key);
     }
 }
