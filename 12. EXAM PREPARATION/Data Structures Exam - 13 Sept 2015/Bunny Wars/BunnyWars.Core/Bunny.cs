@@ -23,7 +23,7 @@
 
         public int Team { get; private set; }
 
-        public int CompareTo(Bunny other)
+        public virtual int CompareTo(Bunny other)
         {
             if (this == other)
             {
@@ -45,7 +45,7 @@
             }
 
             var other = (Bunny) obj;
-            return this.Name == other.Name;
+            return this.Name != other.Name;
         }
 
         public override int GetHashCode()

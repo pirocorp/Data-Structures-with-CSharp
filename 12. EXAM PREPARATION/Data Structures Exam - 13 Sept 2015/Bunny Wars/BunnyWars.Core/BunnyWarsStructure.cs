@@ -11,11 +11,15 @@
         private readonly OrderedDictionary<int, LinkedList<Bunny>[]> _bunnyByRoomByTeam;
         private readonly OrderedDictionary<int, OrderedSet<Bunny>> _bunnyByTeam;
 
+        private static readonly IComparer<Bunny> SuffixComparator = new OrdinalSuffixComparator();
+        private readonly OrderedSet<Bunny> _bySuffix;
+
         public BunnyWarsStructure()
         {
             this._bunnyByName = new Dictionary<string, Bunny>();
             this._bunnyByRoomByTeam = new OrderedDictionary<int, LinkedList<Bunny>[]>();
             this._bunnyByTeam = new OrderedDictionary<int, OrderedSet<Bunny>>();
+            this._bySuffix = new OrderedSet<Bunny>(SuffixComparator);
         }
 
         public int BunnyCount => this._bunnyByName.Count;
@@ -56,6 +60,7 @@
             this._bunnyByName.Add(name, bunny);
             this._bunnyByRoomByTeam[roomId][team].AddLast(bunny);
             this._bunnyByTeam[team].Add(bunny);
+            this._bySuffix.Add(bunny);
         }
 
         public void Remove(int roomId)
@@ -74,6 +79,7 @@
                 {
                     this._bunnyByName.Remove(bunny.Name);
                     this._bunnyByTeam[bunny.Team].Remove(bunny);
+                    this._bySuffix.Remove(bunny);
                 }
             }
         }
@@ -164,6 +170,7 @@
                             detonatedBunny.Score++;
                             this._bunnyByName.Remove(bunny.Name);
                             this._bunnyByTeam[bunny.Team].Remove(bunny);
+                            this._bySuffix.Remove(bunny);
                             var next = current.Next;
                             team.Remove(current);
                             current = next;
@@ -184,7 +191,10 @@
 
         public IEnumerable<Bunny> ListBunniesBySuffix(string suffix)
         {
-            throw new NotImplementedException();
+            var low = new Bunny(suffix, 0, 0);
+            var high = new Bunny(char.MaxValue + suffix, 0, 0);
+
+            return this._bySuffix.Range(low, true, high, false);
         }
 
         private static void TeamValidator(int team)
