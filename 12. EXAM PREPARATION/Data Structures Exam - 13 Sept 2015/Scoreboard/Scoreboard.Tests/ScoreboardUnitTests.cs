@@ -14,6 +14,9 @@ namespace Scoreboard.Tests
             var inputCommands = File.ReadAllLines(
                 @"..\..\..\Judge-Tests\" + inputFileName);
             var output = new StringBuilder();
+
+            var expectedOutput = File.ReadAllText(@"..\..\..\Judge-Tests\" + outputFileName);
+
             foreach (var command in inputCommands)
             {
                 if (command == "End")
@@ -26,7 +29,6 @@ namespace Scoreboard.Tests
                     output.AppendLine(commandOutput);
                 }
             }
-            var expectedOutput = File.ReadAllText(@"..\..\..\Judge-Tests\" + outputFileName);
             var actualOutput = output.ToString();
 
             Assert.AreEqual(expectedOutput, actualOutput);

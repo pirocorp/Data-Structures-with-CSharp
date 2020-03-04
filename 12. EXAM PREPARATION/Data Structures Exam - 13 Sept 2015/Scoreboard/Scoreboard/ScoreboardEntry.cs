@@ -4,7 +4,7 @@
 
     public class ScoreboardEntry : IComparable<ScoreboardEntry>
     {
-        public ScoreboardEntry(int score, string username)
+        public ScoreboardEntry(string username, int score)
         {
             this.Score = score;
             this.Username = username;
@@ -25,5 +25,10 @@
         public int Score { get; private set; }
 
         public string Username { get; private set; }
+
+        public override string ToString()
+        {
+            return $"{this.Username} {this.Score}";
+        }
     }
 }
