@@ -28,24 +28,24 @@ public class Computer : IComputer
         this._steps += turns;
 
         this._byDistance = this._byDistance
-            .SelectMany(x => x.Value)
-            .Where(x =>
+            .SelectMany(distance => distance.Value)
+            .Where(node =>
             {
-                if (x.Value.Distance <= turns)
+                if (node.Value.Distance <= turns)
                 {
-                    this._energy -= x.Value.Damage;
-                    this._byInsertion.Remove(x);
+                    this._energy -= node.Value.Damage;
+                    this._byInsertion.Remove(node);
                 }
 
-                return x.Value.Distance > turns;
+                return node.Value.Distance > turns;
             })
-            .Select(x =>
+            .Select(node =>
             {
-                x.Value.Distance -= turns;
-                return x;
+                node.Value.Distance -= turns;
+                return node;
             })
-            .GroupBy(x => x.Value.Distance)
-            .ToDictionary(x => x.Key, x => x.ToList());
+            .GroupBy(node => node.Value.Distance)
+            .ToDictionary(group => group.Key, group => group.ToList());
 
         if (this._energy < 0)
         {
@@ -67,10 +67,9 @@ public class Computer : IComputer
 
     public void DestroyHighestPriorityTargets(int count)
     {
-
         var enumerator = this._byDistance
-            .SelectMany(x => x.Value)
-            .OrderBy(x => x.Value);
+            .SelectMany(distance => distance.Value)
+            .OrderBy(node => node.Value);
 
         var toBeRemoved = enumerator
             .Take(count)
@@ -82,27 +81,22 @@ public class Computer : IComputer
         }
 
         this._byDistance =  enumerator.Skip(count)
-            .GroupBy(x => x.Value.Distance)
-            .ToDictionary(x => x.Key, x => x.ToList());
+            .GroupBy(node => node.Value.Distance)
+            .ToDictionary(group => group.Key, group => group.ToList());
     }
 
     public void DestroyTargetsInRadius(int radius)
     {
         var toBeRemoved = this._byDistance
-            .Where(x => x.Key <= radius)
-            .ToArray();
+            .Where(distance => distance.Key <= radius)
+            .ToList();
 
-        foreach (var distance in toBeRemoved)
-        {
-            foreach (var node in distance.Value)
-            {
-                this._byInsertion.Remove(node);
-            }
-        }
+        toBeRemoved
+            .ForEach(distance => distance.Value.ForEach(node => this._byInsertion.Remove(node)));
 
         this._byDistance = this._byDistance
-            .Where(x => x.Key > radius)
-            .ToDictionary(x => x.Key, y => y.Value);
+            .Where(distance => distance.Key > radius)
+            .ToDictionary(distance => distance.Key, distance => distance.Value);
     }
 
     public IEnumerable<Invader> Invaders()
