@@ -211,10 +211,13 @@ public class JudgeCorrectness
         this.judge.DeleteSubmission(sub.Id);
         submissions.Remove(sub.Id);
 
-        IEnumerable<Submission> result = this.judge.GetSubmissions();
+        IEnumerable<Submission> result = this.judge.GetSubmissions().ToList();
 
         Assert.AreEqual(submissions.Count, result.Count());
-        CollectionAssert.AreEqual(submissions.Values.OrderBy(x => x), result);
+        var expected = submissions.Values
+            .OrderBy(x => x)
+            .ToList();
+        CollectionAssert.AreEqual(expected, result);
     }
 
     [Test]
@@ -530,7 +533,15 @@ public class JudgeCorrectness
             this.judge.AddSubmission(submission);
         }
 
-        var expected = submissions.Values.Where(x => x.UserId == 3).GroupBy(x => x.ContestId).Select(x => x.OrderByDescending(s => s.Points).ThenBy(s => s.Id).First()).OrderByDescending(x => x.Points).ThenBy(x => x.Id).Select(x => x.ContestId);
+        var expected = submissions.Values
+            .Where(x => x.UserId == 3)
+            .GroupBy(x => x.ContestId)
+            .Select(x => x
+                .OrderByDescending(s => s.Points)
+                .ThenBy(s => s.Id).First())
+            .OrderByDescending(x => x.Points)
+            .ThenBy(x => x.Id)
+            .Select(x => x.ContestId);
 
         IEnumerable<int> result = this.judge.ContestsByUserIdOrderedByPointsDescThenBySubmissionId(3);
 
