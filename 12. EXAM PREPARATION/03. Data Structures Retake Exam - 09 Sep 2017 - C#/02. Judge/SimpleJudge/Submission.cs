@@ -25,9 +25,4 @@ public class Submission : IComparable<Submission>
     {
         return this.Id.CompareTo(other.Id);
     }
-
-    public override string ToString()
-    {
-        return $"Id: {this.Id}";
-    }
 }
