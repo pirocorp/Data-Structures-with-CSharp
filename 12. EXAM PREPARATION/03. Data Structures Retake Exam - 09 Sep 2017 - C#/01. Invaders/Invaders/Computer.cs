@@ -72,8 +72,7 @@ public class Computer : IComputer
             .OrderBy(node => node.Value);
 
         var toBeRemoved = enumerator
-            .Take(count)
-            .ToArray();
+            .Take(count);
 
         foreach (var node in toBeRemoved)
         {
